@@ -10,7 +10,7 @@ public class ParserThread implements Runnable
 	NLP				nlp;
 	
 	String			parseLine;
-	
+	int positive = 0, negative = 0;
 	
 	Thread t;
 	

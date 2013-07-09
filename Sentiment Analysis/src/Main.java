@@ -21,6 +21,9 @@ public class Main
 			BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir") + System.getProperty("file.separator") + "samples" + System.getProperty("file.separator") + fileName));
 			String line;
 			
+			int positive = 0;
+			int negative = 0;
+			
 			while (true)
 			{
 				ParserThread t1 = null;
@@ -74,6 +77,8 @@ public class Main
 				
 				while ((t1 != null && t1.t.isAlive()) || (t2 != null && t2.t.isAlive()) || (t3 != null && t3.t.isAlive()) || (t4 != null && t4.t.isAlive()) || (t5 != null && t5.t.isAlive()) || (t6 != null && t6.t.isAlive()) || (t7 != null && t7.t.isAlive()) || (t8 != null && t8.t.isAlive())) {}
 				
+				positive += t1.positive + t2.positive + t3.positive + t4.positive + t5.positive + t6.positive + t7.positive + t8.positive;
+				negative += t1.negative + t2.negative + t3.negative + t4.negative + t5.negative + t6.negative + t7.negative + t8.negative;
 				
 				if (t1 == null && t2 == null && t3 == null && t4 == null && t5 == null && t6 == null && t7 == null && t8 == null)
 				{
@@ -84,6 +89,12 @@ public class Main
 			}
 			
 			in.close();
+			
+			System.out.println("-----------------------------------------------");
+			System.out.println("-----------------------------------------------");
+			System.out.println("Overall Positive: " + positive);
+			System.out.println("Overall Negative: " + negative);
+			System.out.println("Overall Score: " + (positive - negative));
 		}
 		catch (Exception e)
 		{
