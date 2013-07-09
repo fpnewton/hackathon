@@ -89,7 +89,7 @@ public class Main
 				//positive += threads[1].positive + threads[2].positive + threads[3].positive + threads[4].positive + threads[5].positive + threads[6].positive + threads[7].positive + threads[8].positive;
 				//negative += threads[1].negative + threads[2].negative + threads[3].negative + threads[4].negative + threads[5].negative + threads[6].negative + threads[7].negative + threads[8].negative;
 				
-				if (!threads[0].t.isAlive() && !threads[1].t.isAlive() && !threads[2].t.isAlive() && !threads[3].t.isAlive() && !threads[4].t.isAlive() && !threads[5].t.isAlive() && !threads[6].t.isAlive() && !threads[7].t.isAlive())
+				if (threads[0] == null && threads[1] == null && threads[2] == null && threads[3] == null && threads[4] == null && threads[5] == null && threads[6] == null && threads[7] == null)
 				{
 					break;
 				}
@@ -99,8 +99,8 @@ public class Main
 			
 			in.close();
 			
-			System.out.println("--------------------------------------------");
-			System.out.println("--------------------------------------------");
+			System.out.println("-------------------------------------------");
+			System.out.println("-------------------------------------------");
 			System.out.println("Overall Positive: " + positive);
 			System.out.println("Overall Negative: " + negative);
 			System.out.println("Overall Score: " + (positive - negative));
