@@ -10,14 +10,14 @@ import opennlp.tools.tokenize.Tokenizer;
 import opennlp.tools.tokenize.TokenizerME;
 import opennlp.tools.tokenize.TokenizerModel;
 
-public class PositiveWords {
+public class NegativeWords {
 
-	private String[] words;
+private String[] words;
 	
-	public PositiveWords() {
+	public NegativeWords() {
 		try
 		{
-			String fileName = "Positive Words.txt";
+			String fileName = "Negative Words.txt";
 			BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir") + System.getProperty("file.separator") + "samples" + System.getProperty("file.separator") + fileName));
 			
 			StringBuilder text = new StringBuilder();
