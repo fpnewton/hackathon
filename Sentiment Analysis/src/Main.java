@@ -15,9 +15,12 @@ public class Main
 	
 	public static void main(String[] args)
 	{
+		OutputWriter.openStream();
+		
 		try
 		{
-			String fileName = "01.txt";
+			//04, Short Text
+			String fileName = "Short text.txt";
 			BufferedReader in = new BufferedReader(new FileReader(System.getProperty("user.dir") + System.getProperty("file.separator") + "samples" + System.getProperty("file.separator") + fileName));
 			String line;
 			
@@ -99,16 +102,20 @@ public class Main
 			
 			in.close();
 			
-			System.out.println("-------------------------------------------");
-			System.out.println("-------------------------------------------");
-			System.out.println("Overall Positive: " + positive);
-			System.out.println("Overall Negative: " + negative);
-			System.out.println("Overall Score: " + (positive - negative));
+			OutputWriter.writeToFile("-------------------------------------------");
+			OutputWriter.writeToFile("-------------------------------------------");
+			OutputWriter.writeToFile("-------------------------------------------");
+			OutputWriter.writeToFile("Overall Positive: " + positive);
+			OutputWriter.writeToFile("Overall Negative: " + negative);
+			int result = (positive - negative);
+			OutputWriter.writeToFile("Overall sentiment is "+(result < 0 ? "negative" : "positive")+" by a factor of "+result );
 		}
 		catch (Exception e)
 		{
 			e.printStackTrace();
 		}
+		
+		OutputWriter.endStream();
 	}
 	
 	

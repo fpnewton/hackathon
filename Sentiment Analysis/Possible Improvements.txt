@@ -1,0 +1,3 @@
+Possible Improvements:
+- Assign sentimental value based on part of speech
+- Assign sentimental value based on Capitalization

@@ -11,6 +11,7 @@ public class ParserThread implements Runnable
 	
 	String			parseLine;
 	int positive = 0, negative = 0;
+	int numWords = 0;
 	
 	Thread t;
 	
@@ -23,7 +24,7 @@ public class ParserThread implements Runnable
 		parseLine = input;
 		
 		t = new Thread(this, "Parser Thread");
-	      t.start(); // Start the thread
+	    t.start(); // Start the thread
 	}
 
 
@@ -42,8 +43,6 @@ public class ParserThread implements Runnable
 			PositiveWords	pos		= new PositiveWords();
 			NegativeWords	neg		= new NegativeWords();
 			
-			int positive = 0, negative = 0;
-			
 			ArrayList<String> p = new ArrayList<String>();
 			ArrayList<String> n = new ArrayList<String>();
 			
@@ -55,7 +54,7 @@ public class ParserThread implements Runnable
 				String tokens[]	= nlp.tokenize(sent);
 				String tags[]	= nlp.tag(tokens);
 				
-				System.out.println(sent);
+				OutputWriter.writeToFile(sent);
 				
 				for (int i = 0; i < tokens.length; i++)
 				{
@@ -63,23 +62,25 @@ public class ParserThread implements Runnable
 					{
 						p.add(tokens[i]);
 						positive++;
+						//System.out.println(tokens[i]+" ("+tags[i]+")");
 					}
 					
 					if (neg.contains(tokens[i]))
 					{
 						n.add(tokens[i]);
 						negative++;
+						//System.out.println(tokens[i]+" ("+tags[i]+")");
 					}
 				}
 			}
 			
-			System.out.println("-------------------------------------------");
-			System.out.println("Positive: " + positive);
-			System.out.println(p.toString());
-			System.out.println("Negative: " + negative);
-			System.out.println(n.toString());
-			System.out.println("Total: " + (positive - negative));
-			System.out.println("-------------------------------------------");
+			OutputWriter.writeToFile("-------------------------------------------");
+			OutputWriter.writeToFile("Positive: " + positive);
+			OutputWriter.writeToFile(p.toString());
+			OutputWriter.writeToFile("Negative: " + negative);
+			OutputWriter.writeToFile(n.toString());
+			OutputWriter.writeToFile("Total: " + (positive - negative));
+			OutputWriter.writeToFile("-------------------------------------------");
 		}
 		catch (Exception e)
 		{
